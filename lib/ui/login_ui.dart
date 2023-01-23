@@ -1,8 +1,9 @@
-import 'package:base_flutter/ui/header_ui.dart';
-import 'package:base_flutter/ui/home_ui.dart';
-import 'package:base_flutter/ui/input_text_field_ui.dart';
+import 'package:base_flutter/ui/common/header_ui.dart';
+import 'package:base_flutter/ui/common/input_text_field_ui.dart';
 import 'package:base_flutter/viewModel/login_viewmodel.dart';
 import 'package:flutter/material.dart';
+
+import '../main.dart';
 
 class LoginController extends StatefulWidget {
   const LoginController({Key? key}) : super(key: key);
@@ -22,9 +23,7 @@ class _LoginControllerState extends State<LoginController> {
 
     vm.formStream.listen((event) {
       if ((event as String) == "ok") {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return const Home();
-        }));
+        Navigator.pushNamed(context, Routes.home);
       }
     });
   }

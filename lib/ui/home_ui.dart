@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:base_flutter/ui/header_ui.dart';
+import 'package:base_flutter/ui/common/header_ui.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
