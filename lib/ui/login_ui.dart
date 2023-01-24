@@ -2,7 +2,7 @@ import 'package:base_flutter/ui/common/header_ui.dart';
 import 'package:base_flutter/ui/common/input_text_field_ui.dart';
 import 'package:base_flutter/viewModel/login_viewmodel.dart';
 import 'package:flutter/material.dart';
-
+import 'package:base_flutter/data/remote/service.dart';
 import '../main.dart';
 
 class LoginController extends StatefulWidget {
@@ -21,9 +21,18 @@ class _LoginControllerState extends State<LoginController> {
   void initState() {
     super.initState();
 
-    vm.formStream.listen((event) {
+    vm.formStream.listen((event) async {
       if ((event as String) == "ok") {
-        Navigator.pushNamed(context, Routes.home);
+        final result =
+            await Service.login(emailController.text, passController.text);
+        if (!mounted) return;
+        if (result.isSuccess) {
+          Navigator.pushNamed(context, Routes.home);
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(result.message ?? "Unknown message"),
+          ));
+        }
       }
     });
   }
