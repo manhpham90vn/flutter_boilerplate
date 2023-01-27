@@ -4,6 +4,7 @@ import 'package:base_flutter/viewModel/login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:base_flutter/data/remote/service.dart';
 import '../main.dart';
+import 'package:loggy/loggy.dart';
 
 class LoginController extends StatefulWidget {
   const LoginController({Key? key}) : super(key: key);
@@ -47,6 +48,9 @@ class _LoginControllerState extends State<LoginController> {
 
   @override
   Widget build(BuildContext context) {
+
+    logDebug("Rebuild _LoginControllerState");
+
     return Scaffold(
       appBar: const Header(title: "Login"),
       body: Padding(

@@ -1,6 +1,8 @@
 import 'package:base_flutter/ui/home_ui.dart';
 import 'package:base_flutter/ui/login_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:loggy/loggy.dart';
+import 'package:flutter_loggy/flutter_loggy.dart';
 
 class Routes {
   static const String login = "/login";
@@ -8,6 +10,10 @@ class Routes {
 }
 
 void main() {
+  Loggy.initLoggy(
+    logPrinter: const PrettyDeveloperPrinter(),
+  );
+
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: Routes.login,
