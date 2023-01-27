@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loggy/loggy.dart';
 
 class InputTextField extends StatefulWidget {
   const InputTextField({
@@ -21,6 +22,9 @@ class InputTextField extends StatefulWidget {
 class _InputTextFieldState extends State<InputTextField> {
   @override
   Widget build(BuildContext context) {
+
+    logDebug("Rebuild InputTextField");
+
     return TextField(
       controller: widget.controller,
       obscureText: widget.obscureText ?? false,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loggy/loggy.dart';
 
 class Header extends StatelessWidget with PreferredSizeWidget {
   const Header({
@@ -10,6 +11,9 @@ class Header extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    logDebug("Rebuild Header");
+
     return AppBar(
       iconTheme: const IconThemeData(color: Colors.black),
       title: Text(
