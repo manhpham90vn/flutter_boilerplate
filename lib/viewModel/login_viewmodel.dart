@@ -1,8 +1,7 @@
 import 'dart:async';
+import 'package:base_flutter/repository/user_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:loggy/loggy.dart';
-
-import '../data/remote/app_api.dart';
 import '../repository/local_storage_repository.dart';
 
 class LoginViewModel {
@@ -16,7 +15,7 @@ class LoginViewModel {
   final _successController = StreamController();
   Stream get successStream => _successController.stream;
 
-  final api = GetIt.I<AppApi>();
+  final user = GetIt.I<UserRepository>();
   final local = GetIt.I<LocalStorageRepository>();
 
   validate(String email, String pass) {
@@ -34,7 +33,7 @@ class LoginViewModel {
   }
 
   _login(String email, String pass) async {
-    await api.login(email, pass).then((value) {
+    await user.login(email, pass).then((value) {
       logInfo(value);
       local.setAccessToken(value.token ?? "");
       _successController.sink.add(value);

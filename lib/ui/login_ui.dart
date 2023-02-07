@@ -28,12 +28,10 @@ class _LoginControllerState extends State<LoginController> {
     }, onError: (error) {
       if (error is ErrorResponse) {
         ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(error.message ?? "Unknown error"))
-        );
+            SnackBar(content: Text(error.message ?? "Unknown error")));
       } else if (error is TypeError) {
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Unknown error"))
-        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text("Unknown error")));
       }
     });
   }
@@ -51,7 +49,9 @@ class _LoginControllerState extends State<LoginController> {
     logDebug("Rebuild _LoginControllerState");
 
     return Scaffold(
-      appBar: const Header(title: "Login"),
+      appBar: const Header(
+        title: "Login",
+      ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
         child: Center(
