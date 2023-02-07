@@ -42,6 +42,7 @@ dependencies:
   flutter_loggy_dio: ^2.0.1
   get_it: ^7.2.0
   rxdart: ^0.27.7
+  dio_proxy_plugin: ^2.0.3
 
 dev_dependencies:
   flutter_test:

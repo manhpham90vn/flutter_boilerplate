@@ -19,7 +19,7 @@ class AppApiImp implements AppApi {
   @override
   Future<LoginResponse> login(String email, String password) async {
     try {
-      final response = await client.request(LoginRequestData(email: email, password: password));
+      final response = await client.post(LoginRequestData(email: email, password: password));
       final obj = LoginResponse.fromJson(response.data);
       return obj;
     } on DioError catch (e) {

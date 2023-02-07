@@ -185,6 +185,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.6"
+  dio_proxy_plugin:
+    dependency: "direct main"
+    description:
+      name: dio_proxy_plugin
+      sha256: "6d5bd755c4e3ae30d99072d0bf06c4a7551ce3a20cb24b3d8b60874ed6a2bc17"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.3"
   fake_async:
     dependency: transitive
     description:

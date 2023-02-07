@@ -1,4 +1,5 @@
 import 'package:base_flutter/networking/app_network.dart';
+import 'package:dio/dio.dart';
 
 class LoginRequestData implements RequestData {
   LoginRequestData({ required this.email, required this.password });
@@ -7,21 +8,15 @@ class LoginRequestData implements RequestData {
   final String password;
 
   @override
-  String get baseURL => "http://localhost.charlesproxy.com:3000/";
-
-  @override
   get body => { "email": email, "password": password };
 
   @override
-  Map<String, dynamic> get header => {};
-
-  @override
-  String get method => "post";
+  Map<String, dynamic> get header => { Headers.acceptHeader : Headers.jsonContentType };
 
   @override
   String get path => "login";
 
   @override
-  Map<String, dynamic>? get queryParameters => {};
+  Map<String, dynamic>? get queryParameters => null;
 
 }
