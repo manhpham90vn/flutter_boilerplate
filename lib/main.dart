@@ -1,3 +1,4 @@
+import 'package:base_flutter/di/di.dart';
 import 'package:base_flutter/ui/home_ui.dart';
 import 'package:base_flutter/ui/login_ui.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +11,14 @@ class Routes {
 }
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  register();
+
   Loggy.initLoggy(
     logPrinter: const PrettyDeveloperPrinter(),
   );
-
+  
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: Routes.login,
