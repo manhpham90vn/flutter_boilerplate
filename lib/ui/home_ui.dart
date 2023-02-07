@@ -1,3 +1,4 @@
+import 'package:base_flutter/viewModel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:base_flutter/ui/common/header_ui.dart';
 
@@ -9,13 +10,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  final vm = HomeViewModel();
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: Header(title: "Home",),
-      body: Text("Home"),
+    return Scaffold(
+      appBar: Header(
+        title: "Home",
+        callback: () {
+          vm.logOut();
+          Navigator.of(context).pop();
+        },
+      ),
+      body: const Text("Home"),
     );
   }
 }
-
-

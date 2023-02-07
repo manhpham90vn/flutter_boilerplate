@@ -1,7 +1,9 @@
 import 'package:base_flutter/di/di.dart';
+import 'package:base_flutter/repository/local_storage_repository.dart';
 import 'package:base_flutter/ui/home_ui.dart';
 import 'package:base_flutter/ui/login_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:loggy/loggy.dart';
 import 'package:flutter_loggy/flutter_loggy.dart';
 
@@ -10,7 +12,7 @@ class Routes {
   static const String home = "/home";
 }
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   register();
@@ -18,10 +20,12 @@ void main() {
   Loggy.initLoggy(
     logPrinter: const PrettyDeveloperPrinter(),
   );
-  
+
+  final isLogin = await GetIt.I<LocalStorageRepository>().getAccessToken();
+
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: Routes.login,
+    initialRoute: isLogin != null ? Routes.home : Routes.login,
     routes: {
       Routes.home: (context) => const Home(),
       Routes.login: (context) => const LoginController()
