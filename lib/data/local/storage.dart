@@ -12,7 +12,6 @@ abstract class Storage {
 }
 
 class LocalStore implements Storage {
-
   final _prefs = SharedPreferences.getInstance();
 
   @override
@@ -32,5 +31,4 @@ class LocalStore implements Storage {
     final prefs = await _prefs;
     return prefs.remove(key);
   }
-
 }

@@ -22,7 +22,6 @@ class InputTextField extends StatefulWidget {
 class _InputTextFieldState extends State<InputTextField> {
   @override
   Widget build(BuildContext context) {
-
     logDebug("Rebuild InputTextField");
 
     return TextField(

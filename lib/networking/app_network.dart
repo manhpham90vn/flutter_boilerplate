@@ -21,7 +21,7 @@ class AppNetwork implements AppNetworkInterface {
   AppNetwork() {
     dio = Dio();
     if (!kReleaseMode) {
-      dio.httpClientAdapter = HttpProxyAdapter(ipAddr: "192.168.1.4", port: 8888);
+      dio.httpClientAdapter = HttpProxyAdapter(ipAddr: "192.168.100.173", port: 8888);
     }
     dio.interceptors.add(LoggyDioInterceptor());
     dio.options.baseUrl = "http://localhost.charlesproxy.com:3000/";

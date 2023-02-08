@@ -1,14 +1,14 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'error_response.g.dart';
+part 'error_response.freezed.dart';
 
-@JsonSerializable()
-class ErrorResponse {
-  final String? status;
-  final String? message;
+@freezed
+class ErrorResponse with _$ErrorResponse {
+  factory ErrorResponse(
+      {@JsonKey(name: 'status') String? status,
+      @JsonKey(name: 'message') String? message}) = _ErrorResponse;
 
-  ErrorResponse({ this.status, this.message});
-
-  factory ErrorResponse.fromJson(Map<String, dynamic> json) => _$ErrorResponseFromJson(json);
-  Map<String, dynamic> toJson() => _$ErrorResponseToJson(this);
+  factory ErrorResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_ErrorResponseFromJson(json);
 }

@@ -7,12 +7,10 @@ abstract class UserRepository {
 }
 
 class UserRepositoryImp implements UserRepository {
-
   final api = GetIt.I<AppApi>();
 
   @override
   Future<LoginResponse> login(String email, String password) {
     return api.login(email, password);
   }
-
 }

@@ -1,7 +1,7 @@
 import 'package:base_flutter/main.dart';
 import 'package:base_flutter/ui/common/header_ui.dart';
 import 'package:base_flutter/ui/common/input_text_field_ui.dart';
-import 'package:base_flutter/viewModel/login_viewmodel.dart';
+import 'package:base_flutter/bloc/login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:loggy/loggy.dart';
 

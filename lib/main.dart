@@ -21,15 +21,13 @@ Future<void> main() async {
     logPrinter: const PrettyDeveloperPrinter(),
   );
 
-  final isLogin = await GetIt.I<LocalStorageRepository>().getAccessToken();
+  final accessToken = await GetIt.I<LocalStorageRepository>().getAccessToken();
 
   runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    initialRoute: isLogin != null ? Routes.home : Routes.login,
-    routes: {
-      Routes.home: (context) => const Home(),
-      Routes.login: (context) => const LoginController()
-    }
-  ));
+      debugShowCheckedModeBanner: false,
+      initialRoute: accessToken != null ? Routes.home : Routes.login,
+      routes: {
+        Routes.home: (context) => const Home(),
+        Routes.login: (context) => const LoginController()
+      }));
 }
-

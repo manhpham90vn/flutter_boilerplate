@@ -11,13 +11,13 @@ abstract class AppApi {
 }
 
 class AppApiImp implements AppApi {
-
   final client = GetIt.I<AppNetworkInterface>();
 
   @override
   Future<LoginResponse> login(String email, String password) async {
     try {
-      final response = await client.post(LoginRequestData(email: email, password: password));
+      final response =
+          await client.post(LoginRequestData(email: email, password: password));
       final obj = LoginResponse.fromJson(response.data);
       return obj;
     } on DioError catch (e) {

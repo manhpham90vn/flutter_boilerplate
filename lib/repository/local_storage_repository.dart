@@ -12,7 +12,6 @@ abstract class LocalStorageRepository {
 }
 
 class LocalStorageRepositoryImp implements LocalStorageRepository {
-
   final local = GetIt.I<Storage>();
 
   @override
@@ -44,5 +43,4 @@ class LocalStorageRepositoryImp implements LocalStorageRepository {
   Future<bool> setRefreshToken(String token) async {
     return await local.setString(StorageConstants.token, token);
   }
-
 }
