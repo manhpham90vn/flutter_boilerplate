@@ -5,7 +5,6 @@ import 'package:loggy/loggy.dart';
 import '../repository/local_storage_repository.dart';
 
 class LoginViewModel {
-
   final _loginStreamController = StreamController();
   Stream get loginStream => _loginStreamController.stream;
 
@@ -37,7 +36,7 @@ class LoginViewModel {
       logInfo(value);
       local.setAccessToken(value.token ?? "");
       _successController.sink.add(value);
-    }).catchError((error){
+    }).catchError((error) {
       logError(error);
       _successController.sink.addError(error);
     });
@@ -48,5 +47,4 @@ class LoginViewModel {
     _passwordStreamController.close();
     _successController.close();
   }
-
 }
