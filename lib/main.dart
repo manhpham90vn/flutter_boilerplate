@@ -3,7 +3,6 @@ import 'package:base_flutter/repository/local_storage_repository.dart';
 import 'package:base_flutter/ui/home_ui.dart';
 import 'package:base_flutter/ui/login_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:loggy/loggy.dart';
 import 'package:flutter_loggy/flutter_loggy.dart';
 
@@ -15,13 +14,13 @@ class Routes {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  register();
+  await configureDependencies();
 
   Loggy.initLoggy(
     logPrinter: const PrettyDeveloperPrinter(),
   );
 
-  final accessToken = await GetIt.I<LocalStorageRepository>().getAccessToken();
+  final accessToken = getIt<LocalStorageRepository>().getAccessToken();
 
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,

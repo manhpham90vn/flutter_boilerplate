@@ -1,27 +1,27 @@
 import 'package:base_flutter/data/local/storage.dart';
-import 'package:get_it/get_it.dart';
+import 'package:base_flutter/di/di.dart';
 
 abstract class LocalStorageRepository {
-  Future<String?> getAccessToken();
+  String? getAccessToken();
   Future<bool> setAccessToken(String token);
   Future<bool> removeAccessToken();
 
-  Future<String?> getRefreshToken();
+  String? getRefreshToken();
   Future<bool> setRefreshToken(String token);
   Future<bool> removeRefreshToken();
 }
 
 class LocalStorageRepositoryImp implements LocalStorageRepository {
-  final local = GetIt.I<Storage>();
+  final local = getIt<Storage>();
 
   @override
-  Future<String?> getAccessToken() async {
-    return await local.getString(StorageConstants.token);
+  String? getAccessToken() {
+    return local.getString(StorageConstants.token);
   }
 
   @override
-  Future<String?> getRefreshToken() async {
-    return await local.getString(StorageConstants.refreshToken);
+  String? getRefreshToken() {
+    return local.getString(StorageConstants.refreshToken);
   }
 
   @override

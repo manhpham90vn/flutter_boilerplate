@@ -74,12 +74,20 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
-  # json serializable
+  # test
+  test: ^1.16.0
+
+  # runner
   build_runner: ^2.3.3
+
+  # json serializable
   json_serializable: ^6.6.0
 
   # freezed
   freezed: ^2.3.2
+
+  # bloc
+  bloc_test: ^9.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

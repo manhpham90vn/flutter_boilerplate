@@ -1,5 +1,5 @@
-import 'package:base_flutter/networking/app_network.dart';
 import 'package:dio/dio.dart';
+import '../../networking/request_data.dart';
 
 class LoginRequestData implements RequestData {
   LoginRequestData({required this.email, required this.password});
