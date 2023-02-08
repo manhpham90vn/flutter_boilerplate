@@ -1,4 +1,5 @@
 import 'package:base_flutter/bloc/home_viewmodel.dart';
+import 'package:base_flutter/main.dart';
 import 'package:flutter/material.dart';
 import 'package:base_flutter/ui/common/header_ui.dart';
 
@@ -19,7 +20,7 @@ class _HomeState extends State<Home> {
         title: "Home",
         callback: () {
           vm.logOut();
-          Navigator.of(context).pop();
+          Navigator.pushNamed(context, Routes.login); // TODO: need update
         },
       ),
       body: const Text("Home"),

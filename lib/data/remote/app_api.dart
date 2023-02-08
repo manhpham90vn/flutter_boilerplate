@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:base_flutter/data/remote/login_request_data.dart';
+import 'package:base_flutter/di/di.dart';
 import 'package:base_flutter/model/error_response.dart';
 import 'package:base_flutter/networking/app_network.dart';
 import 'package:dio/dio.dart';
-import 'package:get_it/get_it.dart';
 import '../../model/login_response.dart';
 
 abstract class AppApi {
@@ -11,7 +11,7 @@ abstract class AppApi {
 }
 
 class AppApiImp implements AppApi {
-  final client = GetIt.I<AppNetworkInterface>();
+  final client = getIt<AppNetworkInterface>();
 
   @override
   Future<LoginResponse> login(String email, String password) async {

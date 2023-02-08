@@ -1,3 +1,4 @@
+import 'package:base_flutter/di/di.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageConstants {
@@ -7,28 +8,26 @@ class StorageConstants {
 
 abstract class Storage {
   Future<bool> setString(String key, String value);
-  Future<String?> getString(String key);
+  String? getString(String key);
   Future<bool> remove(String key);
 }
 
 class LocalStore implements Storage {
-  final _prefs = SharedPreferences.getInstance();
+
+  final _prefs = getIt<SharedPreferences>();
 
   @override
-  Future<String?> getString(String key) async {
-    final prefs = await _prefs;
-    return prefs.getString(key);
+  String? getString(String key) {
+    return _prefs.getString(key);
   }
 
   @override
-  Future<bool> setString(String key, String value) async {
-    final prefs = await _prefs;
-    return prefs.setString(StorageConstants.token, value);
+  Future<bool> setString(String key, String value) {
+    return _prefs.setString(StorageConstants.token, value);
   }
 
   @override
-  Future<bool> remove(String key) async {
-    final prefs = await _prefs;
-    return prefs.remove(key);
+  Future<bool> remove(String key) {
+    return _prefs.remove(key);
   }
 }
