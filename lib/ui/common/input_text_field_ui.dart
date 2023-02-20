@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loggy/loggy.dart';
 
-class InputTextField extends StatefulWidget {
+class InputTextField extends StatelessWidget {
   const InputTextField({
     Key? key,
     this.hintText,
@@ -16,19 +16,14 @@ class InputTextField extends StatefulWidget {
   final String? errorText;
 
   @override
-  State<InputTextField> createState() => _InputTextFieldState();
-}
-
-class _InputTextFieldState extends State<InputTextField> {
-  @override
   Widget build(BuildContext context) {
     logDebug("Rebuild InputTextField");
 
     return TextField(
-      controller: widget.controller,
-      obscureText: widget.obscureText ?? false,
+      controller: controller,
+      obscureText: obscureText ?? false,
       decoration: InputDecoration(
-          hintText: widget.hintText,
+          hintText: hintText,
           enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.black12)),
           focusedBorder: const OutlineInputBorder(
@@ -37,7 +32,7 @@ class _InputTextFieldState extends State<InputTextField> {
               borderSide: BorderSide(color: Colors.black12)),
           focusedErrorBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.black12)),
-          errorText: widget.errorText),
+          errorText: errorText),
     );
   }
 }
