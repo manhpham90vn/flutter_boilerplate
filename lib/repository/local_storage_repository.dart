@@ -1,5 +1,5 @@
 import 'package:base_flutter/data/local/storage.dart';
-import 'package:base_flutter/di/di.dart';
+import 'package:injectable/injectable.dart';
 
 abstract class LocalStorageRepository {
   String? getAccessToken();
@@ -11,8 +11,11 @@ abstract class LocalStorageRepository {
   Future<bool> removeRefreshToken();
 }
 
+@Singleton(as: LocalStorageRepository)
 class LocalStorageRepositoryImp implements LocalStorageRepository {
-  final local = getIt<Storage>();
+
+  final Storage local;
+  LocalStorageRepositoryImp({required this.local});
 
   @override
   String? getAccessToken() {

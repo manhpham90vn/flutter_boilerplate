@@ -1,4 +1,4 @@
-import 'package:base_flutter/di/di.dart';
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageConstants {
@@ -12,22 +12,25 @@ abstract class Storage {
   Future<bool> remove(String key);
 }
 
+@Singleton(as: Storage)  
 class LocalStore implements Storage {
 
-  final _prefs = getIt<SharedPreferences>();
+  final SharedPreferences prefs;
+
+  LocalStore({required this.prefs});
 
   @override
   String? getString(String key) {
-    return _prefs.getString(key);
+    return prefs.getString(key);
   }
 
   @override
   Future<bool> setString(String key, String value) {
-    return _prefs.setString(StorageConstants.token, value);
+    return prefs.setString(StorageConstants.token, value);
   }
 
   @override
   Future<bool> remove(String key) {
-    return _prefs.remove(key);
+    return prefs.remove(key);
   }
 }

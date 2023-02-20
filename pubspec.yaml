@@ -52,6 +52,7 @@ dependencies:
 
   # di
   get_it: ^7.2.0
+  injectable:
 
   # rx
   rxdart: ^0.27.7
@@ -88,6 +89,9 @@ dev_dependencies:
 
   # bloc
   bloc_test: ^9.0.0
+
+  # di
+  injectable_generator:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

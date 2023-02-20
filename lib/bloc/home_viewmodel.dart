@@ -1,8 +1,11 @@
 import 'package:base_flutter/repository/local_storage_repository.dart';
-import 'package:get_it/get_it.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable()
 class HomeViewModel {
-  final local = GetIt.I<LocalStorageRepository>();
+  final LocalStorageRepository local;
+
+  HomeViewModel({ required this.local });
 
   logOut() {
     local.removeAccessToken();

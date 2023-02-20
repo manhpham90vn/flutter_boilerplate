@@ -1,15 +1,17 @@
-import 'package:base_flutter/di/di.dart';
 import 'package:base_flutter/networking/request_data.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
 abstract class AppNetworkInterface {
   Future<Response<T>> get<T>(RequestData requestData);
   Future<Response<T>> post<T>(RequestData requestData);
 }
 
+@Singleton(as: AppNetworkInterface)
 class AppNetwork implements AppNetworkInterface {
 
-  final dio = getIt<Dio>();
+  final Dio dio;
+  AppNetwork({required this.dio});
 
   @override
   Future<Response<T>> get<T>(RequestData requestData) {

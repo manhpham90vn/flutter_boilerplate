@@ -1,4 +1,5 @@
 import 'package:base_flutter/bloc/home_viewmodel.dart';
+import 'package:base_flutter/di/di.dart';
 import 'package:base_flutter/main.dart';
 import 'package:flutter/material.dart';
 import 'package:base_flutter/ui/common/header_ui.dart';
@@ -11,7 +12,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final vm = HomeViewModel();
+  final vm = getIt<HomeViewModel>();
 
   @override
   Widget build(BuildContext context) {

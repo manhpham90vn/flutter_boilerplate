@@ -1,3 +1,4 @@
+import 'package:base_flutter/di/di.dart';
 import 'package:base_flutter/main.dart';
 import 'package:base_flutter/ui/common/header_ui.dart';
 import 'package:base_flutter/ui/common/input_text_field_ui.dart';
@@ -17,7 +18,7 @@ class LoginController extends StatefulWidget {
 class _LoginControllerState extends State<LoginController> {
   final emailController = TextEditingController();
   final passController = TextEditingController();
-  final vm = LoginViewModel();
+  final vm = getIt<LoginViewModel>();
 
   @override
   void initState() {

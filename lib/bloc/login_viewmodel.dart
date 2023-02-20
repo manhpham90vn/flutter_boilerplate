@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'package:base_flutter/repository/user_repository.dart';
-import 'package:get_it/get_it.dart';
+import 'package:injectable/injectable.dart';
 import 'package:loggy/loggy.dart';
 import '../repository/local_storage_repository.dart';
 
+@Injectable()
 class LoginViewModel {
   final _loginStreamController = StreamController();
+
   Stream get loginStream => _loginStreamController.stream;
 
   final _passwordStreamController = StreamController();
@@ -14,8 +16,9 @@ class LoginViewModel {
   final _successController = StreamController();
   Stream get successStream => _successController.stream;
 
-  final user = GetIt.I<UserRepository>();
-  final local = GetIt.I<LocalStorageRepository>();
+  final UserRepository user;
+  final LocalStorageRepository local;
+  LoginViewModel({required this.user, required this.local});
 
   validate(String email, String pass) {
     if (email.isEmpty || !email.contains("@")) {
