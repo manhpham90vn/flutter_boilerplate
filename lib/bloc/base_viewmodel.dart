@@ -1,6 +1,5 @@
-import 'dart:async';
+import 'package:rxdart/rxdart.dart';
 
 abstract class BaseViewModel {
-  final isLoadingController = StreamController<bool>();
-  Stream<bool> get loadingStream => isLoadingController.stream;
+  final isLoadingController = BehaviorSubject<bool>();
 }

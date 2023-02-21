@@ -25,7 +25,7 @@ class _LoginControllerState extends State<LoginController> {
   void initState() {
     super.initState();
 
-    vm.successStream.listen((event) {
+    vm.successController.listen((event) {
       Navigator.pushNamed(context, Routes.home);
     }, onError: (error) {
       if (error is ErrorResponse) {
@@ -51,7 +51,7 @@ class _LoginControllerState extends State<LoginController> {
     logDebug("Rebuild _LoginControllerState");
 
     return LoadingOverlay(
-        stream: vm.loadingStream,
+        stream: vm.isLoadingController,
         child: Scaffold(
           appBar: const Header(
             title: "Login",
@@ -64,7 +64,7 @@ class _LoginControllerState extends State<LoginController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   StreamBuilder(
-                    stream: vm.loginStream,
+                    stream: vm.loginStreamController,
                     builder: (context, snapshot) {
                       return InputTextField(
                         hintText: "Email",
@@ -78,7 +78,7 @@ class _LoginControllerState extends State<LoginController> {
                     height: 10,
                   ),
                   StreamBuilder(
-                    stream: vm.passwordStream,
+                    stream: vm.passwordStreamController,
                     builder: (context, snapshot) {
                       return InputTextField(
                         obscureText: true,
