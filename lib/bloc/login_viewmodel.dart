@@ -1,11 +1,12 @@
 import 'dart:async';
+import 'package:base_flutter/bloc/base_viewmodel.dart';
 import 'package:base_flutter/repository/user_repository.dart';
 import 'package:injectable/injectable.dart';
 import 'package:loggy/loggy.dart';
 import '../repository/local_storage_repository.dart';
 
 @Injectable()
-class LoginViewModel {
+class LoginViewModel extends BaseViewModel {
   final _loginStreamController = StreamController();
 
   Stream get loginStream => _loginStreamController.stream;
@@ -35,13 +36,16 @@ class LoginViewModel {
   }
 
   _login(String email, String pass) async {
+    isLoadingController.sink.add(true);
     await user.login(email, pass).then((value) {
       logInfo(value);
       local.setAccessToken(value.token ?? "");
       _successController.sink.add(value);
+      isLoadingController.sink.add(false);
     }).catchError((error) {
       logError(error);
       _successController.sink.addError(error);
+      isLoadingController.sink.add(false);
     });
   }
 

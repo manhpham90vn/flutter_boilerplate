@@ -6,10 +6,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 @module
 abstract class RegisterModule {
-
   @singleton
   Dio get dio => Dio()
-    ..httpClientAdapter = HttpProxyAdapter(ipAddr: "192.168.100.173", port: 8888)
+    ..httpClientAdapter =
+        HttpProxyAdapter(ipAddr: "192.168.100.193", port: 8888)
     ..interceptors.add(LoggyDioInterceptor())
     ..options.baseUrl = "http://localhost.charlesproxy.com:3000/"
     ..options.connectTimeout = 30000
@@ -17,5 +17,5 @@ abstract class RegisterModule {
 
   @singleton
   @preResolve
-  Future<SharedPreferences> get prefs => SharedPreferences.getInstance();  
+  Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 }
