@@ -11,11 +11,12 @@ abstract class AppNetworkInterface {
 
 @Singleton(as: AppNetworkInterface)
 class AppNetwork implements AppNetworkInterface {
-
   final Dio dio;
   final Dio dioRefreshable;
 
-  AppNetwork({@Named("dio") required this.dio, @Named("dioRefreshable") required this.dioRefreshable});
+  AppNetwork(
+      {@Named("dio") required this.dio,
+      @Named("dioRefreshable") required this.dioRefreshable});
 
   @override
   Future<Response<T>> get<T>(RequestData requestData) {
@@ -29,13 +30,13 @@ class AppNetwork implements AppNetworkInterface {
         data: requestData.body,
         options: Options(contentType: Headers.formUrlEncodedContentType));
   }
-  
+
   @override
   Future<Response<T>> getRefreshable<T>(RequestData requestData) {
     return dioRefreshable.get(requestData.path,
         queryParameters: requestData.queryParameters);
   }
-  
+
   @override
   Future<Response<T>> postRefreshable<T>(RequestData requestData) {
     return dioRefreshable.post(requestData.path,

@@ -17,7 +17,6 @@ class LoginController extends StatefulWidget {
 }
 
 class _LoginControllerState extends State<LoginController> {
-
   final vm = getIt<LoginViewModel>();
 
   @override

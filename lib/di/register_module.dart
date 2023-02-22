@@ -9,16 +9,15 @@ import '../networking/refresh_token_interceptor.dart';
 
 @module
 abstract class RegisterModule {
-
   static const proxy = "192.168.100.193";
   static const port = 8888;
 
   @singleton
-  @Named("dio")  
+  @Named("dio")
   Dio get dio => _dio();
 
   @singleton
-  @Named("dioRefreshable")  
+  @Named("dioRefreshable")
   Dio get dioRefreshable => _dioRefreshable();
 
   @singleton

@@ -13,7 +13,6 @@ abstract class LocalStorageRepository {
 
 @Singleton(as: LocalStorageRepository)
 class LocalStorageRepositoryImp implements LocalStorageRepository {
-
   final Storage local;
   LocalStorageRepositoryImp({required this.local});
 

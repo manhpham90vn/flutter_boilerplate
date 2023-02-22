@@ -8,7 +8,6 @@ import '../repository/local_storage_repository.dart';
 
 @Injectable()
 class LoginViewModel extends BaseViewModel {
-
   // input
   void onChangedLogin(String value) => loginInputController.add(value);
   void onChangedPass(String value) => passInputController.add(value);

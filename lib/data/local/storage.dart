@@ -12,9 +12,8 @@ abstract class Storage {
   Future<bool> remove(String key);
 }
 
-@Singleton(as: Storage)  
+@Singleton(as: Storage)
 class LocalStore implements Storage {
-
   final SharedPreferences prefs;
 
   LocalStore({required this.prefs});

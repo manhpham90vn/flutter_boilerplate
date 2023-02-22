@@ -8,7 +8,6 @@ abstract class UserRepository {
 
 @Singleton(as: UserRepository)
 class UserRepositoryImp implements UserRepository {
-
   final AppApi api;
 
   UserRepositoryImp({required this.api});

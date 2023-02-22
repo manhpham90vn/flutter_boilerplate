@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 class HomeViewModel extends BaseViewModel {
   final LocalStorageRepository local;
 
-  HomeViewModel({ required this.local });
+  HomeViewModel({required this.local});
 
   logOut() {
     local.removeAccessToken();
