@@ -9,26 +9,38 @@ import '../repository/local_storage_repository.dart';
 @Injectable()
 class LoginViewModel extends BaseViewModel {
 
-  final loginStreamController = BehaviorSubject<String>();
-  final passwordStreamController = BehaviorSubject<String>();
+  // input
+  void onChangedLogin(String value) => loginInputController.add(value);
+  void onChangedPass(String value) => passInputController.add(value);
+  final loginInputController = BehaviorSubject<String>();
+  final passInputController = BehaviorSubject<String>();
+
+  // output
+  final loginOutputController = BehaviorSubject<String>();
+  final passOutputController = BehaviorSubject<String>();
   final successController = BehaviorSubject<LoginResponse>();
 
+  // di
   final UserRepository user;
   final LocalStorageRepository local;
   LoginViewModel({required this.user, required this.local});
 
-  validate(String email, String pass) {
-    if (email.isEmpty || !email.contains("@")) {
-      loginStreamController.addError("Email is invalid");
+  validate() {
+    if (loginInputController.valueOrNull == null) {
+      loginOutputController.addError("Email is empty");
       return;
     }
-    loginStreamController.add("ok");
-    if (pass.isEmpty) {
-      passwordStreamController.addError("Password is invalid");
+    if (!loginInputController.value.contains("@")) {
+      loginOutputController.addError("Email is invalid");
       return;
     }
-    passwordStreamController.add("ok");
-    _login(email, pass);
+    loginOutputController.add("ok");
+    if (passInputController.valueOrNull == null) {
+      passOutputController.addError("Password is empty");
+      return;
+    }
+    passOutputController.add("ok");
+    _login(loginInputController.value, passInputController.value);
   }
 
   _login(String email, String pass) async {
@@ -46,8 +58,10 @@ class LoginViewModel extends BaseViewModel {
   }
 
   void dispose() {
-    loginStreamController.close();
-    passwordStreamController.close();
+    loginInputController.close();
+    passInputController.close();
+    loginOutputController.close();
+    passOutputController.close();
     successController.close();
   }
 }

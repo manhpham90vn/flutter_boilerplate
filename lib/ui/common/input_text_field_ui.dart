@@ -6,13 +6,13 @@ class InputTextField extends StatelessWidget {
     Key? key,
     this.hintText,
     this.obscureText,
-    this.controller,
+    this.onChanged,
     this.errorText,
   }) : super(key: key);
 
   final String? hintText;
   final bool? obscureText;
-  final TextEditingController? controller;
+  final void Function(String value)? onChanged;
   final String? errorText;
 
   @override
@@ -20,7 +20,7 @@ class InputTextField extends StatelessWidget {
     logDebug("Rebuild InputTextField");
 
     return TextField(
-      controller: controller,
+      onChanged: onChanged,
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
           hintText: hintText,

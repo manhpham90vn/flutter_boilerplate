@@ -17,8 +17,7 @@ class LoginController extends StatefulWidget {
 }
 
 class _LoginControllerState extends State<LoginController> {
-  final emailController = TextEditingController();
-  final passController = TextEditingController();
+
   final vm = getIt<LoginViewModel>();
 
   @override
@@ -40,8 +39,6 @@ class _LoginControllerState extends State<LoginController> {
 
   @override
   void dispose() {
-    emailController.dispose();
-    passController.dispose();
     vm.dispose();
     super.dispose();
   }
@@ -64,11 +61,11 @@ class _LoginControllerState extends State<LoginController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   StreamBuilder(
-                    stream: vm.loginStreamController,
+                    stream: vm.loginOutputController,
                     builder: (context, snapshot) {
                       return InputTextField(
                         hintText: "Email",
-                        controller: emailController,
+                        onChanged: vm.onChangedLogin,
                         errorText:
                             snapshot.hasError ? snapshot.error as String : null,
                       );
@@ -78,12 +75,12 @@ class _LoginControllerState extends State<LoginController> {
                     height: 10,
                   ),
                   StreamBuilder(
-                    stream: vm.passwordStreamController,
+                    stream: vm.passOutputController,
                     builder: (context, snapshot) {
                       return InputTextField(
                         obscureText: true,
                         hintText: "Password",
-                        controller: passController,
+                        onChanged: vm.onChangedPass,
                         errorText:
                             snapshot.hasError ? snapshot.error as String : null,
                       );
@@ -93,9 +90,7 @@ class _LoginControllerState extends State<LoginController> {
                     height: 10,
                   ),
                   TextButton(
-                      onPressed: () {
-                        vm.validate(emailController.text, passController.text);
-                      },
+                      onPressed: () => vm.validate(),
                       child: const Text("Login"))
                 ],
               ),
