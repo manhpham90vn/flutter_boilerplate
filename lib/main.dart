@@ -2,6 +2,7 @@ import 'package:base_flutter/di/di.dart';
 import 'package:base_flutter/repository/local_storage_repository.dart';
 import 'package:base_flutter/ui/home_ui.dart';
 import 'package:base_flutter/ui/login_ui.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:loggy/loggy.dart';
 import 'package:flutter_loggy/flutter_loggy.dart';
@@ -16,9 +17,11 @@ Future<void> main() async {
 
   await configureDependencies();
 
-  Loggy.initLoggy(
-    logPrinter: const PrettyDeveloperPrinter(),
-  );
+  if (kDebugMode) {
+    Loggy.initLoggy(
+      logPrinter: const PrettyDeveloperPrinter(),
+    );
+  }
 
   final accessToken = getIt<LocalStorageRepository>().getAccessToken();
 

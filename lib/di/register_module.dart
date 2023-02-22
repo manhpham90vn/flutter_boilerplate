@@ -9,6 +9,10 @@ import '../networking/refresh_token_interceptor.dart';
 
 @module
 abstract class RegisterModule {
+
+  static const proxy = "192.168.100.193";
+  static const port = 8888;
+
   @singleton
   @Named("dio")  
   Dio get dio => _dio();
@@ -24,7 +28,7 @@ abstract class RegisterModule {
   Dio _dio() {
     final dio = Dio();
     if (kDebugMode) {
-      dio.httpClientAdapter = HttpProxyAdapter(ipAddr: "192.168.100.193", port: 8888);
+      dio.httpClientAdapter = HttpProxyAdapter(ipAddr: proxy, port: port);
       dio.interceptors.add(LoggyDioInterceptor());
     }
     dio.options.baseUrl = "http://localhost.charlesproxy.com:3000/";
@@ -36,7 +40,7 @@ abstract class RegisterModule {
   Dio _dioRefreshable() {
     final dio = Dio();
     if (kDebugMode) {
-      dio.httpClientAdapter = HttpProxyAdapter(ipAddr: "192.168.100.193", port: 8888);
+      dio.httpClientAdapter = HttpProxyAdapter(ipAddr: proxy, port: port);
       dio.interceptors.add(LoggyDioInterceptor());
     }
     dio.interceptors.add(RefreshTokenInterceptor());
