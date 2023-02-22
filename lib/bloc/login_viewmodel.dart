@@ -37,7 +37,7 @@ class LoginViewModel extends BaseViewModel {
       logInfo(value);
       local.setAccessToken(value.token ?? "");
       successController.add(value);
-      isLoadingController.sink.add(false);
+      isLoadingController.add(false);
     }).catchError((error) {
       logError(error);
       successController.addError(error);

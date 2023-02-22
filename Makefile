@@ -1,20 +1,15 @@
-SHELL := /bin/bash
-
-.DEFAULT_GOAL := all
-
-.PHONY: all
-all: clean run
+.DEFAULT_GOAL := run
 
 .PHONY: clean
-clean: cleanFlutter cleanCache
-cleanFlutter:
-	flutter clean
-cleanCache:	
-	flutter pub cache clean -f
+clean: cleanFlutterBuild cleanPubCache
+cleanFlutterBuild:
+	fvm flutter clean
+cleanPubCache:	
+	fvm flutter pub cache clean -f
 
 .PHONY: run
-run: get buildPackages
-get:
-	flutter pub get
-buildPackages:	
-	flutter packages pub run build_runner build --delete-conflicting-outputs
+run: getPub runPub
+getPub:
+	fvm flutter pub get
+runPub:	
+	fvm flutter packages pub run build_runner build --delete-conflicting-outputs
