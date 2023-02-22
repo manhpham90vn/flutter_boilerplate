@@ -1,20 +1,17 @@
-.DEFAULT_GOAL := run
+.DEFAULT_GOAL := bootstrap
 
-.PHONY: delete
-delete: clean cleanPubCache
-
-.PHONY: run
-run: getPub runPub
+.PHONY: bootstrap
+bootstrap: clean cleanPubCache getPub runPub
 
 clean:
 	fvm flutter clean
-runPub:
-	fvm flutter packages pub run build_runner build --delete-conflicting-outputs
-getPub:
-	fvm flutter pub get	
-upgradePub:
-	fvm flutter pub upgrade	
 cleanPubCache:
 	fvm flutter pub cache clean -f
+getPub:
+	fvm flutter pub get
+runPub:
+	fvm flutter packages pub run build_runner build --delete-conflicting-outputs
+upgradePub:
+	fvm flutter pub upgrade
 showOutdate:
-	fvm flutter pub outdated	
+	fvm flutter pub outdated
