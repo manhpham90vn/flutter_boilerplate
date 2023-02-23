@@ -9,10 +9,10 @@ import '../repository/local_storage_repository.dart';
 @Injectable()
 class LoginViewModel extends BaseViewModel {
   // input
-  void onChangedLogin(String value) => loginInputController.add(value);
-  void onChangedPass(String value) => passInputController.add(value);
-  final loginInputController = BehaviorSubject<String>();
-  final passInputController = BehaviorSubject<String>();
+  void onChangedLogin(String value) => _loginInputController.add(value);
+  void onChangedPass(String value) => _passInputController.add(value);
+  final _loginInputController = BehaviorSubject<String>();
+  final _passInputController = BehaviorSubject<String>();
 
   // output
   final loginOutputController = BehaviorSubject<String>();
@@ -25,43 +25,41 @@ class LoginViewModel extends BaseViewModel {
   LoginViewModel({required this.user, required this.local});
 
   validate() {
-    if (loginInputController.valueOrNull == null) {
+    if (_loginInputController.valueOrNull == null) {
       loginOutputController.addError("Email is empty");
       return;
     }
-    if (!loginInputController.value.contains("@")) {
+    if (!_loginInputController.value.contains("@")) {
       loginOutputController.addError("Email is invalid");
       return;
     }
     loginOutputController.add("ok");
-    if (passInputController.valueOrNull == null) {
+    if (_passInputController.valueOrNull == null) {
       passOutputController.addError("Password is empty");
       return;
     }
     passOutputController.add("ok");
-    _login(loginInputController.value, passInputController.value);
+    _login(_loginInputController.value, _passInputController.value);
   }
 
   _login(String email, String pass) async {
     isLoadingController.add(true);
-    await user.login(email, pass).then((result) {
-      result.when((success) {
-        logInfo(success);
-        local.setAccessToken(success.token ?? "");
-        local.setRefreshToken(success.refreshToken ?? "");
-        successController.add(success);
-        isLoadingController.add(false);
-      }, (error) {
-        logError(error);
-        successController.addError(error);
-        isLoadingController.add(false);
-      });
+    final result = await user.login(email, pass);
+    result.when((success) {
+      logInfo(success);
+      local.setAccessToken(success.token ?? "");
+      local.setRefreshToken(success.refreshToken ?? "");
+      successController.add(success);
+    }, (error) {
+      logError(error);
+      successController.addError(error);
     });
+    isLoadingController.add(false);
   }
 
   void dispose() {
-    loginInputController.close();
-    passInputController.close();
+    _loginInputController.close();
+    _passInputController.close();
     loginOutputController.close();
     passOutputController.close();
     successController.close();
