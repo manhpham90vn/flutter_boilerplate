@@ -1,7 +1,10 @@
 .DEFAULT_GOAL := bootstrap
 
+.PHONY: install
+install: clean cleanPubCache getPub runPub
+
 .PHONY: bootstrap
-bootstrap: clean cleanPubCache getPub runPub
+bootstrap: getPub runPub
 
 clean:
 	fvm flutter clean

@@ -14,12 +14,12 @@ abstract class RegisterModule {
   static const connectTimeout = 30000;
   static const receiveTimeout = 30000;
 
-  @singleton
   @Named("dio")
+  @singleton
   Dio get dio => _dio();
 
-  @singleton
   @Named("dioRefreshable")
+  @singleton
   Dio get dioRefreshable => _dioRefreshable();
 
   @singleton
