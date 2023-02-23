@@ -11,6 +11,8 @@ import '../networking/refresh_token_interceptor.dart';
 abstract class RegisterModule {
   static const proxy = "192.168.100.193";
   static const port = 8888;
+  static const connectTimeout = 30000;
+  static const receiveTimeout = 30000;
 
   @singleton
   @Named("dio")
@@ -25,27 +27,26 @@ abstract class RegisterModule {
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
   Dio _dio() {
-    final dio = Dio();
-    if (kDebugMode) {
-      dio.httpClientAdapter = HttpProxyAdapter(ipAddr: proxy, port: port);
-      dio.interceptors.add(LoggyDioInterceptor());
-    }
+    var dio = _initDio();
     dio.options.baseUrl = "http://localhost.charlesproxy.com:3000/";
-    dio.options.connectTimeout = 30000;
-    dio.options.receiveTimeout = 30000;
     return dio;
   }
 
   Dio _dioRefreshable() {
+    var dio = _initDio();
+    dio.options.baseUrl = "http://localhost.charlesproxy.com:3001/";
+    dio.interceptors.add(RefreshTokenInterceptor());
+    return dio;
+  }
+
+  Dio _initDio() {
     final dio = Dio();
     if (kDebugMode) {
       dio.httpClientAdapter = HttpProxyAdapter(ipAddr: proxy, port: port);
       dio.interceptors.add(LoggyDioInterceptor());
     }
-    dio.interceptors.add(RefreshTokenInterceptor());
-    dio.options.baseUrl = "http://localhost.charlesproxy.com:3000/";
-    dio.options.connectTimeout = 30000;
-    dio.options.receiveTimeout = 30000;
+    dio.options.connectTimeout = connectTimeout;
+    dio.options.receiveTimeout = receiveTimeout;
     return dio;
   }
 }
