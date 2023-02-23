@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import '../../networking/request_data.dart';
 
 class LoginRequestData implements RequestData {
@@ -11,8 +10,7 @@ class LoginRequestData implements RequestData {
   get body => {"email": email, "password": password};
 
   @override
-  Map<String, dynamic> get header =>
-      {Headers.acceptHeader: Headers.jsonContentType};
+  Map<String, dynamic> get header => {};
 
   @override
   String get path => "login";

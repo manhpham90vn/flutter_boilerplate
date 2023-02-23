@@ -1,3 +1,4 @@
+import 'package:base_flutter/networking/bearer_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_proxy_plugin/dio_proxy.dart';
 import 'package:flutter/foundation.dart';
@@ -34,8 +35,9 @@ abstract class RegisterModule {
 
   Dio _dioRefreshable() {
     var dio = _initDio();
-    dio.options.baseUrl = "http://localhost.charlesproxy.com:3001/";
+    dio.options.baseUrl = "http://localhost.charlesproxy.com:3000/";
     dio.interceptors.add(RefreshTokenInterceptor());
+    dio.interceptors.add(BearerInterceptor());
     return dio;
   }
 

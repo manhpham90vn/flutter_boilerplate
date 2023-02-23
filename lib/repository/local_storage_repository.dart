@@ -22,8 +22,8 @@ class LocalStorageRepositoryImp implements LocalStorageRepository {
   }
 
   @override
-  String? getRefreshToken() {
-    return local.getString(StorageConstants.refreshToken);
+  Future<bool> setAccessToken(String token) async {
+    return await local.setString(StorageConstants.token, token);
   }
 
   @override
@@ -32,17 +32,17 @@ class LocalStorageRepositoryImp implements LocalStorageRepository {
   }
 
   @override
-  Future<bool> removeRefreshToken() async {
-    return await local.remove(StorageConstants.refreshToken);
-  }
-
-  @override
-  Future<bool> setAccessToken(String token) async {
-    return await local.setString(StorageConstants.refreshToken, token);
+  String? getRefreshToken() {
+    return local.getString(StorageConstants.refreshToken);
   }
 
   @override
   Future<bool> setRefreshToken(String token) async {
-    return await local.setString(StorageConstants.token, token);
+    return await local.setString(StorageConstants.refreshToken, token);
+  }
+
+  @override
+  Future<bool> removeRefreshToken() async {
+    return await local.remove(StorageConstants.refreshToken);
   }
 }

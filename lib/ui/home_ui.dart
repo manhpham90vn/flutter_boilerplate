@@ -15,11 +15,23 @@ class _HomeState extends State<Home> {
   final vm = getIt<HomeViewModel>();
 
   @override
+  void initState() {
+    super.initState();
+
+    vm.getData();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: Header(
         title: "Home",
-        callback: () {
+        leftBtnTitle: "Reload",
+        leftBtnCallback: () {
+          vm.getData();
+        },
+        rightBtnTitle: "Logout",
+        rightBtnCallback: () {
           vm.logOut();
           Navigator.pushNamed(context, Routes.login); // TODO: need update
         },

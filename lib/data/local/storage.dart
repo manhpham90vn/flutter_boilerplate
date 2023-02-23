@@ -25,7 +25,7 @@ class LocalStore implements Storage {
 
   @override
   Future<bool> setString(String key, String value) {
-    return prefs.setString(StorageConstants.token, value);
+    return prefs.setString(key, value);
   }
 
   @override

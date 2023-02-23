@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:loggy/loggy.dart';
 
 class Header extends StatelessWidget with PreferredSizeWidget {
-  const Header({Key? key, required this.title, this.callback})
+  const Header(
+      {Key? key,
+      required this.title,
+      this.leftBtnTitle,
+      this.leftBtnCallback,
+      this.rightBtnTitle,
+      this.rightBtnCallback})
       : super(key: key);
 
   final String title;
-  final VoidCallback? callback;
+  final String? leftBtnTitle;
+  final VoidCallback? leftBtnCallback;
+  final String? rightBtnTitle;
+  final VoidCallback? rightBtnCallback;
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +28,25 @@ class Header extends StatelessWidget with PreferredSizeWidget {
         style: const TextStyle(color: Colors.black),
       ),
       backgroundColor: Colors.white,
-      actions: callback == null
+      leading: leftBtnTitle == null
+          ? null
+          : TextButton(
+              onPressed: () => leftBtnCallback!(),
+              child: Text(
+                leftBtnTitle!,
+                style: const TextStyle(fontSize: 18),
+              )),
+      leadingWidth: 80,
+      actions: rightBtnCallback == null
           ? []
           : <Widget>[
               TextButton(
                 onPressed: () {
-                  callback!();
+                  rightBtnCallback!();
                 },
-                child: const Text(
-                  "Logout",
-                  style: TextStyle(fontSize: 18),
+                child: Text(
+                  rightBtnTitle!,
+                  style: const TextStyle(fontSize: 18),
                 ),
               )
             ],
