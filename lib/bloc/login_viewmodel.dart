@@ -44,15 +44,18 @@ class LoginViewModel extends BaseViewModel {
 
   _login(String email, String pass) async {
     isLoadingController.add(true);
-    await user.login(email, pass).then((value) {
-      logInfo(value);
-      local.setAccessToken(value.token ?? "");
-      successController.add(value);
-      isLoadingController.add(false);
-    }).catchError((error) {
-      logError(error);
-      successController.addError(error);
-      isLoadingController.add(false);
+    await user.login(email, pass).then((result) {
+      result.when((success) {
+        logInfo(success);
+        local.setAccessToken(success.token ?? "");
+        local.setRefreshToken(success.refreshToken ?? "");
+        successController.add(success);
+        isLoadingController.add(false);
+      }, (error) {
+        logError(error);
+        successController.addError(error);
+        isLoadingController.add(false);
+      });
     });
   }
 

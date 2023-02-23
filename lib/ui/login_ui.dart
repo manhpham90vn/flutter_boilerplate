@@ -29,7 +29,7 @@ class _LoginControllerState extends State<LoginController> {
       if (error is ErrorResponse) {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(error.message ?? "Unknown error")));
-      } else if (error is TypeError) {
+      } else {
         ScaffoldMessenger.of(context)
             .showSnackBar(const SnackBar(content: Text("Unknown error")));
       }

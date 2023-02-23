@@ -4,10 +4,11 @@ import 'package:base_flutter/model/error_response.dart';
 import 'package:base_flutter/networking/app_network.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:multiple_result/multiple_result.dart';
 import '../../model/login_response.dart';
 
 abstract class AppApi {
-  Future<LoginResponse> login(String email, String password);
+  Future<Result<LoginResponse, dynamic>> login(String email, String password);
 }
 
 @Singleton(as: AppApi)
@@ -17,17 +18,20 @@ class AppApiImp implements AppApi {
   AppApiImp({required this.client});
 
   @override
-  Future<LoginResponse> login(String email, String password) async {
+  Future<Result<LoginResponse, dynamic>> login(String email, String password) async {
     try {
-      final response =
-          await client.post(LoginRequestData(email: email, password: password));
+      final response = await client.post(LoginRequestData(email: email, password: password));
       final obj = LoginResponse.fromJson(response.data);
-      return obj;
+      return Success(obj);
     } on DioError catch (e) {
-      final obj = ErrorResponse.fromJson(e.response?.data);
-      return Future.error(obj);
-    } on TypeError catch (e) {
-      return Future.error(e);
+      try {
+        final obj = ErrorResponse.fromJson(e.response?.data);
+        return Error(obj);
+      } catch (e) {
+        return Error(e);
+      }
+    } catch (e) {
+      return Error(e);
     }
   }
 }
