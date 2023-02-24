@@ -22,6 +22,7 @@ class Header extends StatelessWidget with PreferredSizeWidget {
     logDebug("Rebuild Header");
 
     return AppBar(
+      centerTitle: true,
       iconTheme: const IconThemeData(color: Colors.black),
       title: Text(
         title,
