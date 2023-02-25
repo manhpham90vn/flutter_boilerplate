@@ -80,6 +80,7 @@ dev_dependencies:
 
   # test
   test: ^1.16.0
+  mockito: ^5.3.2
 
   # runner
   build_runner: ^2.3.3

@@ -22,3 +22,7 @@ deleteGenerate:
 	rm -rf *.freezed.dart
 	rm -rf *.g.dart
 	rm -rf di.config.dart
+runUnitTest:
+	fvm flutter test test/unit_test
+runWidgetTest:
+	fvm flutter test test/widget_test
