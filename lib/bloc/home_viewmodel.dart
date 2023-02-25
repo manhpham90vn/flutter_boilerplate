@@ -30,9 +30,9 @@ class HomeViewModel extends BaseViewModel {
 
   // get data serial
   Future<void> getDataSerial() async {
-    final userResponse = user.getUserInfo();
-    logDebug(userResponse);
-    final pagingResponse = home.getList(1, "ascending");
-    logDebug(pagingResponse);
+    final userResponse = await user.getUserInfo();
+    logDebug(userResponse.tryGetSuccess()?.email);
+    final pagingResponse = await home.getList(1, "ascending");
+    logDebug(pagingResponse.tryGetSuccess()?.items);
   }
 }
