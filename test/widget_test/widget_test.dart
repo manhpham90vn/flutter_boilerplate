@@ -10,7 +10,7 @@ void main() async {
   await configureDependencies();
 
   testWidgets('Login test', (WidgetTester tester) async {
-    await tester.pumpWidget(const MaterialApp(
+    await tester.pumpWidget(MaterialApp(
       home: LoginController(),
     ));
 
