@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../networking/refresh_token_interceptor.dart';
 
-const proxy = "192.168.100.193";
+const proxy = "192.168.1.3";
 const port = 8888;
 const connectTimeout = 30000;
 const receiveTimeout = 30000;

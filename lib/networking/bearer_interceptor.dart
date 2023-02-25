@@ -6,6 +6,7 @@ class BearerInterceptor extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
+    // todo: how to use di here with no di cycle
     final pref = await SharedPreferences.getInstance();
     final token = pref.getString(StorageConstants.token);
     if (token != null) {

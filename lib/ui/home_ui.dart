@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
 
-    vm.getData();
+    vm.getDataSerial();
   }
 
   @override
@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
         title: "Home",
         leftBtnTitle: "Reload",
         leftBtnCallback: () {
-          vm.getData();
+          vm.getDataConcurrent();
         },
         rightBtnTitle: "Logout",
         rightBtnCallback: () {

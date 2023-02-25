@@ -1,10 +1,10 @@
 .DEFAULT_GOAL := bootstrap
 
 .PHONY: install
-install: clean cleanPubCache getPub runPub
+install: clean cleanPubCache getPub deleteGenerate runPub
 
 .PHONY: bootstrap
-bootstrap: getPub runPub
+bootstrap: getPub deleteGenerate runPub
 
 clean:
 	fvm flutter clean
@@ -18,3 +18,7 @@ upgradePub:
 	fvm flutter pub upgrade
 showOutdate:
 	fvm flutter pub outdated
+deleteGenerate:
+	rm -rf *.freezed.dart
+	rm -rf *.g.dart
+	rm -rf di.config.dart
