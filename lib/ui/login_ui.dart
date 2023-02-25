@@ -10,20 +10,20 @@ import 'package:loggy/loggy.dart';
 import '../model/error_response.dart';
 
 class LoginController extends StatefulWidget {
-  const LoginController({Key? key}) : super(key: key);
+  LoginController({Key? key}) : super(key: key);
+
+  final vm = getIt<LoginViewModel>();
 
   @override
   State<LoginController> createState() => _LoginControllerState();
 }
 
 class _LoginControllerState extends State<LoginController> {
-  final vm = getIt<LoginViewModel>();
-
   @override
   void initState() {
     super.initState();
 
-    vm.successController.listen((event) {
+    widget.vm.successController.listen((event) {
       Navigator.pushNamed(context, Routes.home);
     }, onError: (error) {
       if (error is ErrorResponse) {
@@ -38,7 +38,7 @@ class _LoginControllerState extends State<LoginController> {
 
   @override
   void dispose() {
-    vm.dispose();
+    widget.vm.dispose();
     super.dispose();
   }
 
@@ -47,7 +47,7 @@ class _LoginControllerState extends State<LoginController> {
     logDebug("Rebuild _LoginControllerState");
 
     return LoadingOverlay(
-        stream: vm.isLoadingController,
+        stream: widget.vm.isLoadingController,
         child: Scaffold(
           appBar: const Header(
             title: "Login",
@@ -60,11 +60,11 @@ class _LoginControllerState extends State<LoginController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   StreamBuilder(
-                    stream: vm.loginOutputController,
+                    stream: widget.vm.loginOutputController,
                     builder: (context, snapshot) {
                       return InputTextField(
                         hintText: "Email",
-                        onChanged: vm.onChangedLogin,
+                        onChanged: widget.vm.onChangedLogin,
                         errorText:
                             snapshot.hasError ? snapshot.error as String : null,
                       );
@@ -74,12 +74,12 @@ class _LoginControllerState extends State<LoginController> {
                     height: 10,
                   ),
                   StreamBuilder(
-                    stream: vm.passOutputController,
+                    stream: widget.vm.passOutputController,
                     builder: (context, snapshot) {
                       return InputTextField(
                         obscureText: true,
                         hintText: "Password",
-                        onChanged: vm.onChangedPass,
+                        onChanged: widget.vm.onChangedPass,
                         errorText:
                             snapshot.hasError ? snapshot.error as String : null,
                       );
@@ -89,7 +89,7 @@ class _LoginControllerState extends State<LoginController> {
                     height: 10,
                   ),
                   TextButton(
-                      onPressed: () => vm.validate(),
+                      onPressed: () => widget.vm.validate(),
                       child: const Text("Login"))
                 ],
               ),

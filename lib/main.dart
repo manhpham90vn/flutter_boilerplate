@@ -29,7 +29,7 @@ Future<void> main() async {
       debugShowCheckedModeBanner: false,
       initialRoute: accessToken != null ? Routes.home : Routes.login,
       routes: {
-        Routes.home: (context) => const Home(),
-        Routes.login: (context) => const LoginController()
+        Routes.home: (context) => Home(),
+        Routes.login: (context) => LoginController()
       }));
 }

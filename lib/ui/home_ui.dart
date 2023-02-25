@@ -5,20 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:base_flutter/ui/common/header_ui.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  Home({Key? key}) : super(key: key);
+
+  final vm = getIt<HomeViewModel>();
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  final vm = getIt<HomeViewModel>();
-
   @override
   void initState() {
     super.initState();
 
-    vm.getDataSerial();
+    widget.vm.getDataSerial();
   }
 
   @override
@@ -28,11 +28,11 @@ class _HomeState extends State<Home> {
         title: "Home",
         leftBtnTitle: "Reload",
         leftBtnCallback: () {
-          vm.getDataConcurrent();
+          widget.vm.getDataConcurrent();
         },
         rightBtnTitle: "Logout",
         rightBtnCallback: () {
-          vm.logOut();
+          widget.vm.logOut();
           Navigator.pushNamed(context, Routes.login); // TODO: need update
         },
       ),
