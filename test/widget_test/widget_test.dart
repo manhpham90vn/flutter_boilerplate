@@ -1,3 +1,4 @@
+import 'package:base_flutter/bloc/login_viewmodel.dart';
 import 'package:base_flutter/di/di.dart';
 import 'package:base_flutter/ui/login_ui.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +10,11 @@ void main() async {
   SharedPreferences.setMockInitialValues({});
   await configureDependencies();
 
+  final loginViewModel = getIt<LoginViewModel>();
+
   testWidgets('Login test', (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(
-      home: LoginController(),
+      home: LoginController(vm: loginViewModel),
     ));
 
     expect(find.byType(TextButton), findsOneWidget);

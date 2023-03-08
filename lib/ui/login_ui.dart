@@ -1,4 +1,3 @@
-import 'package:base_flutter/di/di.dart';
 import 'package:base_flutter/main.dart';
 import 'package:base_flutter/ui/common/header_ui.dart';
 import 'package:base_flutter/ui/common/input_text_field_ui.dart';
@@ -10,9 +9,9 @@ import 'package:loggy/loggy.dart';
 import '../model/error_response.dart';
 
 class LoginController extends StatefulWidget {
-  LoginController({Key? key}) : super(key: key);
+  const LoginController({Key? key, required this.vm}) : super(key: key);
 
-  final vm = getIt<LoginViewModel>();
+  final LoginViewModel vm;
 
   @override
   State<LoginController> createState() => _LoginControllerState();

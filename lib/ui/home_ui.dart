@@ -1,13 +1,12 @@
 import 'package:base_flutter/bloc/home_viewmodel.dart';
-import 'package:base_flutter/di/di.dart';
 import 'package:base_flutter/main.dart';
 import 'package:flutter/material.dart';
 import 'package:base_flutter/ui/common/header_ui.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key, required this.vm}) : super(key: key);
 
-  final vm = getIt<HomeViewModel>();
+  final HomeViewModel vm;
 
   @override
   State<Home> createState() => _HomeState();

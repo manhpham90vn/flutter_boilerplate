@@ -1,3 +1,5 @@
+import 'package:base_flutter/bloc/home_viewmodel.dart';
+import 'package:base_flutter/bloc/login_viewmodel.dart';
 import 'package:base_flutter/di/di.dart';
 import 'package:base_flutter/repository/local_storage_repository.dart';
 import 'package:base_flutter/ui/home_ui.dart';
@@ -24,12 +26,18 @@ Future<void> main() async {
   }
 
   final accessToken = getIt<LocalStorageRepository>().getAccessToken();
+  final homeViewModel = getIt<HomeViewModel>();
+  final loginViewModel = getIt<LoginViewModel>();
 
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: accessToken != null ? Routes.home : Routes.login,
       routes: {
-        Routes.home: (context) => Home(),
-        Routes.login: (context) => LoginController()
+        Routes.home: (context) => Home(
+              vm: homeViewModel,
+            ),
+        Routes.login: (context) => LoginController(
+              vm: loginViewModel,
+            )
       }));
 }
