@@ -25,7 +25,7 @@ class LoginViewModel extends BaseViewModel {
   LoginViewModel({required this.user, required this.local});
 
   validate() {
-    if (_loginInputController.valueOrNull == null) {
+    if (_loginInputController.valueOrNull == null || _loginInputController.value.isEmpty) {
       loginOutputController.addError("Email is empty");
       return;
     }
@@ -34,7 +34,7 @@ class LoginViewModel extends BaseViewModel {
       return;
     }
     loginOutputController.add("ok");
-    if (_passInputController.valueOrNull == null) {
+    if (_passInputController.valueOrNull == null || _passInputController.value.isEmpty) {
       passOutputController.addError("Password is empty");
       return;
     }
