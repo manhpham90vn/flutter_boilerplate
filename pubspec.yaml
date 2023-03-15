@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   # network
-  dio: ^4.0.6
+  dio: ^5.0.0
   dio_proxy_plugin: ^2.0.3
 
   # local data
