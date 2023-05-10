@@ -65,7 +65,7 @@ dependencies:
   freezed_annotation: ^2.2.0
 
   # result
-  multiple_result: ^4.0.0
+  multiple_result: ^5.0.0
 
 dev_dependencies:
   flutter_test:
