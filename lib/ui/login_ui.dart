@@ -88,7 +88,7 @@ class _LoginControllerState extends State<LoginController> {
                     height: 10,
                   ),
                   TextButton(
-                      onPressed: () => widget.vm.validate(),
+                      onPressed: () => widget.vm.login(),
                       child: const Text("Login"))
                 ],
               ),
