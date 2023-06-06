@@ -10,6 +10,7 @@ import 'package:base_flutter/model/user_response.dart';
 import 'package:base_flutter/networking/app_network.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:loggy/loggy.dart';
 import 'package:multiple_result/multiple_result.dart';
 import '../../model/login_response.dart';
 
@@ -32,11 +33,15 @@ class AppApiImp implements AppApi {
       final response = await client.post(LoginRequestData(email: email, password: password));
       final obj = LoginResponse.fromJson(response.data);
       return Success(obj);
-    } on DioError catch (e) {
-      try {
-        final obj = ErrorResponse.fromJson(e.response?.data);
-        return Error(obj);
-      } catch (e) {
+    } on DioException catch (e) {
+      if (e.type == DioExceptionType.badResponse && e.response?.statusCode == 403) {
+          try {
+            final obj = ErrorResponse.fromJson(e.response?.data);
+            return Error(obj);
+          } catch (e) {
+            return Error(e);
+          }
+      } else {
         return Error(e);
       }
     } catch (e) {
