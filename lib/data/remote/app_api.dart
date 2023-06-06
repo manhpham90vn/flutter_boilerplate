@@ -10,7 +10,6 @@ import 'package:base_flutter/model/user_response.dart';
 import 'package:base_flutter/networking/app_network.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:loggy/loggy.dart';
 import 'package:multiple_result/multiple_result.dart';
 import '../../model/login_response.dart';
 
