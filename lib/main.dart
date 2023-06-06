@@ -20,6 +20,7 @@ Future<void> main() async {
   await configureDependencies();
 
   if (kDebugMode) {
+    // Log
     Loggy.initLoggy(
       logPrinter: const PrettyDeveloperPrinter(),
     );

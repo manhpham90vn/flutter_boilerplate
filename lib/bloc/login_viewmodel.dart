@@ -49,6 +49,9 @@ class LoginViewModel extends BaseViewModel {
   LoginViewModel({required this.user, required this.local});
 
   login() async {
+    if (_loginInputController.valueOrNull == null || _passInputController.valueOrNull == null) {
+      return;
+    }
     isLoadingController.add(true);
     final result = await user.login(_loginInputController.value, _passInputController.value);
     result.when((success) {

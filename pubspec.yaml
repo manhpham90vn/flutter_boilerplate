@@ -31,72 +31,75 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  # https://pub.dev/packages/cupertino_icons
   cupertino_icons: ^1.0.2
 
   # network
-  dio: ^4.0.6
-  dio_proxy_plugin: ^2.0.3
+  # https://pub.dev/packages/dio
+  dio: ^5.2.0
 
   # local data
-  shared_preferences: ^2.0.17
+  # https://pub.dev/packages/shared_preferences
+  shared_preferences: ^2.1.1
 
   # json serializable
-  json_annotation: ^4.8.0
+  # https://pub.dev/packages/json_annotation
+  json_annotation: ^4.8.1
 
   # log
+  # https://pub.dev/packages/loggy
   loggy: ^2.0.2
+  # https://pub.dev/packages/flutter_loggy
   flutter_loggy: ^2.0.2
-  flutter_loggy_dio: ^2.0.1
 
   # di
+  # https://pub.dev/packages/get_it
   get_it: ^7.2.0
-  injectable:
+  # https://pub.dev/packages/injectable
+  injectable: ^2.1.2
 
   # rx
+  # https://pub.dev/packages/rxdart
   rxdart: ^0.27.7
 
-  # bloc
-  bloc: ^8.0.0
-  flutter_bloc: ^8.0.0
-
   # freezed
+  # https://pub.dev/packages/freezed_annotation
   freezed_annotation: ^2.2.0
 
   # result
+  # https://pub.dev/packages/multiple_result
   multiple_result: ^5.0.0
+
+  # route
+  # https://pub.dev/packages/go_router
+  go_router: ^7.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
+  # https://pub.dev/packages/flutter_lints
   flutter_lints: ^2.0.0
 
   # test
-  test: ^1.16.0
-  mockito: ^5.3.2
+  # https://pub.dev/packages/test
+  test: ^1.24.1
 
   # runner
-  build_runner: ^2.3.3
+  # https://pub.dev/packages/build_runner
+  build_runner: ^2.4.4
 
   # json serializable
-  json_serializable: ^6.6.0
+  # https://pub.dev/packages/json_serializable
+  json_serializable: ^6.7.0
 
   # freezed
-  freezed: ^2.3.2
-
-  # bloc
-  bloc_test: ^9.0.0
+  # https://pub.dev/packages/freezed
+  freezed: ^2.3.5
 
   # di
-  injectable_generator:
+  # https://pub.dev/packages/injectable_generator
+  injectable_generator: ^2.1.6
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
