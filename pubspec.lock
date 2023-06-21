@@ -316,10 +316,10 @@ packages:
     dependency: "direct dev"
     description:
       name: go_router_builder
-      sha256: be6f526af1c44190842184608477547f83bf4e720ba440f5b03836f19afac0d5
+      sha256: c7db6ba9c2397851a9dce63cc2cd98659315e48b41da5bcf5e7dcf061e80c64c
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.0"
+    version: "2.1.1"
   graphs:
     dependency: transitive
     description:
@@ -577,7 +577,7 @@ packages:
     source: hosted
     version: "2.3.6"
   rxdart:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: rxdart
       sha256: "0c7c0cedd93788d996e33041ffecda924cc54389199cde4e6a34b440f50044cb"

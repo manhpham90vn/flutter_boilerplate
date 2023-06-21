@@ -1,9 +1,10 @@
-import 'package:base_flutter/main.dart';
+import 'package:base_flutter/app/app_screen.dart';
 import 'package:base_flutter/ui/common/header_ui.dart';
 import 'package:base_flutter/ui/common/input_text_field_ui.dart';
 import 'package:base_flutter/bloc/login_viewmodel.dart';
 import 'package:base_flutter/ui/loading_overlay.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:loggy/loggy.dart';
 
 import '../model/error_response.dart';
@@ -23,7 +24,7 @@ class _LoginControllerState extends State<LoginController> {
     super.initState();
 
     widget.vm.successController.listen((event) {
-      Navigator.pushNamed(context, Routes.home);
+      context.go(AppScreen.homePath);
     }, onError: (error) {
       if (error is ErrorResponse) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -48,8 +49,8 @@ class _LoginControllerState extends State<LoginController> {
     return LoadingOverlay(
         stream: widget.vm.isLoadingController,
         child: Scaffold(
-          appBar: const Header(
-            title: "Login",
+          appBar: Header(
+            title: AppScreen.login.title,
           ),
           body: Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),

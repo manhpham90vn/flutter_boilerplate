@@ -46,6 +46,10 @@ dependencies:
   # https://pub.dev/packages/json_annotation
   json_annotation: ^4.8.1
 
+  # rx
+  # https://pub.dev/packages/rxdart
+  rxdart: ^0.27.7
+
   # log
   # https://pub.dev/packages/loggy
   loggy: ^2.0.2

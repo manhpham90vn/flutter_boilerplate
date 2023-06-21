@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../networking/refresh_token_interceptor.dart';
 
-const _proxy = "192.168.100.112";
+const _proxy = "192.168.100.115";
 const _port = 8888;
 const _connectTimeout = 30;
 const _receiveTimeout = 30;
