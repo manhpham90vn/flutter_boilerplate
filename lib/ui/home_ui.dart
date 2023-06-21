@@ -1,7 +1,8 @@
 import 'package:base_flutter/bloc/home_viewmodel.dart';
-import 'package:base_flutter/main.dart';
+import 'package:base_flutter/app/app_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:base_flutter/ui/common/header_ui.dart';
+import 'package:go_router/go_router.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, required this.vm}) : super(key: key);
@@ -24,7 +25,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: Header(
-        title: "Home",
+        title: AppScreen.home.title,
         leftBtnTitle: "Reload",
         leftBtnCallback: () {
           widget.vm.getDataConcurrent();
@@ -32,7 +33,7 @@ class _HomeState extends State<Home> {
         rightBtnTitle: "Logout",
         rightBtnCallback: () {
           widget.vm.logOut();
-          Navigator.pushNamed(context, Routes.login); // TODO: need update
+          context.go(AppScreen.loginPath);
         },
       ),
       body: ListView(
