@@ -1,28 +1,22 @@
 .DEFAULT_GOAL := bootstrap
 
-.PHONY: install
-install: clean cleanPubCache getPub deleteGenerate runPub
-
 .PHONY: bootstrap
-bootstrap: getPub deleteGenerate runPub
+bootstrap: delete clean get run
 
 clean:
 	fvm flutter clean
-cleanPubCache:
 	fvm flutter pub cache clean -f
-getPub:
+get:
 	fvm flutter pub get
-runPub:
+run:
 	fvm flutter packages pub run build_runner build --delete-conflicting-outputs
-upgradePub:
+upgrade:
 	fvm flutter pub upgrade
-showOutdate:
-	fvm flutter pub outdated
-deleteGenerate:
+delete:
 	rm -rf *.freezed.dart
 	rm -rf *.g.dart
 	rm -rf di.config.dart
-runUnitTest:
+unit:
 	fvm flutter test test/unit_test
-runWidgetTest:
+ui:
 	fvm flutter test test/widget_test
