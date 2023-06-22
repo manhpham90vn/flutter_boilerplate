@@ -1,4 +1,4 @@
-import 'package:base_flutter/app/app_screen.dart';
+import 'package:base_flutter/app/app_route.dart';
 import 'package:base_flutter/ui/common/header_ui.dart';
 import 'package:base_flutter/ui/common/input_text_field_ui.dart';
 import 'package:base_flutter/bloc/login_viewmodel.dart';
@@ -24,7 +24,7 @@ class _LoginControllerState extends State<LoginController> {
     super.initState();
 
     widget.vm.successController.listen((event) {
-      context.go(AppScreen.homePath);
+      GoRouter.of(context).go(HomeRoute.path);
     }, onError: (error) {
       if (error is ErrorResponse) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -49,8 +49,8 @@ class _LoginControllerState extends State<LoginController> {
     return LoadingOverlay(
         stream: widget.vm.isLoadingController,
         child: Scaffold(
-          appBar: Header(
-            title: AppScreen.login.title,
+          appBar: const Header(
+            title: "Login",
           ),
           body: Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),

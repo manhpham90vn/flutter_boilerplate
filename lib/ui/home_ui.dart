@@ -1,5 +1,5 @@
+import 'package:base_flutter/app/app_route.dart';
 import 'package:base_flutter/bloc/home_viewmodel.dart';
-import 'package:base_flutter/app/app_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:base_flutter/ui/common/header_ui.dart';
 import 'package:go_router/go_router.dart';
@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: Header(
-        title: AppScreen.home.title,
+        title: "Home",
         leftBtnTitle: "Reload",
         leftBtnCallback: () {
           widget.vm.getDataConcurrent();
@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
         rightBtnTitle: "Logout",
         rightBtnCallback: () {
           widget.vm.logOut();
-          context.go(AppScreen.loginPath);
+          GoRouter.of(context).go(LoginRoute.path);
         },
       ),
       body: ListView(
