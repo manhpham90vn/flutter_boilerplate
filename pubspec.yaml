@@ -109,7 +109,7 @@ dev_dependencies:
   # route
   go_router_builder: ^2.0.0
 
-  riverpod_generator: 1.0.6
+  riverpod_generator: 2.2.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
