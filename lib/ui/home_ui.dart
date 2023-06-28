@@ -33,7 +33,8 @@ class _HomeState extends State<Home> {
         rightBtnTitle: "Logout",
         rightBtnCallback: () {
           widget.vm.logOut();
-          GoRouter.of(context).go(LoginRoute.path);
+          notifier.isLoggedIn = false;
+          const LoginRoute().go(context);
         },
       ),
       body: ListView(

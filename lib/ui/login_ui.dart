@@ -4,7 +4,6 @@ import 'package:base_flutter/ui/common/input_text_field_ui.dart';
 import 'package:base_flutter/bloc/login_viewmodel.dart';
 import 'package:base_flutter/ui/loading_overlay.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:loggy/loggy.dart';
 
 import '../model/error_response.dart';
@@ -24,7 +23,8 @@ class _LoginControllerState extends State<LoginController> {
     super.initState();
 
     widget.vm.successController.listen((event) {
-      GoRouter.of(context).go(HomeRoute.path);
+      notifier.isLoggedIn = true;
+      const HomeRoute().go(context);
     }, onError: (error) {
       if (error is ErrorResponse) {
         ScaffoldMessenger.of(context).showSnackBar(

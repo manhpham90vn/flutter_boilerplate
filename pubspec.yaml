@@ -109,7 +109,9 @@ dev_dependencies:
   # route
   go_router_builder: ^2.0.0
 
-  riverpod_generator: 1.0.6
+  riverpod_generator: ^2.2.3
+
+  flutter_native_splash: ^2.3.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -152,3 +154,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_native_splash:
+  color: "#42a5f5"
+  android_12:
+    color: "#42a5f5"
