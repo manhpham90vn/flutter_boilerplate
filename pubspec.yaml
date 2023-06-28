@@ -59,6 +59,7 @@ dependencies:
   # di
   # https://pub.dev/packages/get_it
   get_it: ^7.2.0
+
   # https://pub.dev/packages/injectable
   injectable: ^2.1.2
 
@@ -76,6 +77,7 @@ dependencies:
 
   # state management
   flutter_riverpod: ^2.3.6
+  riverpod_annotation: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -106,6 +108,8 @@ dev_dependencies:
 
   # route
   go_router_builder: ^2.0.0
+
+  riverpod_generator: 1.0.6
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

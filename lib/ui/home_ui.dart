@@ -1,4 +1,4 @@
-import 'package:base_flutter/app/app_route.dart';
+import 'package:base_flutter/app/app_router.dart';
 import 'package:base_flutter/bloc/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:base_flutter/ui/common/header_ui.dart';
