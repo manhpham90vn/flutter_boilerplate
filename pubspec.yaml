@@ -84,7 +84,7 @@ dev_dependencies:
     sdk: flutter
 
   # https://pub.dev/packages/flutter_lints
-  flutter_lints: ^2.0.0
+  flutter_lints: ^5.0.0
 
   # test
   # https://pub.dev/packages/test
